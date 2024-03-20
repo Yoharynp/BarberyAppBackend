@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberyApp", "BarberyApp\BarberyApp.csproj", "{F5FD7CA6-5678-431E-ADB4-67F80DBABC29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacion", "Aplicacion", "{B7BC9E3F-2750-4991-8F60-89B5AB7C6D01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{D9C0FEB0-F4E4-410D-B9C8-269D0CE75674}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BappDominio", "BappDominio\BappDominio.csproj", "{C0672EB2-E759-4600-86F0-A1DC853ABE9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructura", "Infraestructura", "{E2E8B6AD-C4BD-498E-A482-FFB93A88737B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BappInfraestructura", "BappInfraestructura\BappInfraestructura.csproj", "{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4A7D2D80-369A-46FB-AE7D-02096D6D9714}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5FD7CA6-5678-431E-ADB4-67F80DBABC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FD7CA6-5678-431E-ADB4-67F80DBABC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FD7CA6-5678-431E-ADB4-67F80DBABC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FD7CA6-5678-431E-ADB4-67F80DBABC29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0672EB2-E759-4600-86F0-A1DC853ABE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0672EB2-E759-4600-86F0-A1DC853ABE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0672EB2-E759-4600-86F0-A1DC853ABE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0672EB2-E759-4600-86F0-A1DC853ABE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5FD7CA6-5678-431E-ADB4-67F80DBABC29} = {B7BC9E3F-2750-4991-8F60-89B5AB7C6D01}
+		{C0672EB2-E759-4600-86F0-A1DC853ABE9F} = {D9C0FEB0-F4E4-410D-B9C8-269D0CE75674}
+		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66} = {E2E8B6AD-C4BD-498E-A482-FFB93A88737B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94B66FC3-81EC-4D41-BD99-EF538ACB1085}
+	EndGlobalSection
+EndGlobal
