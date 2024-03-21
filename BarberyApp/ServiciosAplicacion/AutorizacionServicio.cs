@@ -57,7 +57,8 @@ namespace BarberyApp.ServiciosAplicacion
                 NombreUsuario = usuario_encontrado.Nombre,
                 Resultado = true,
                 Token = token,
-                Mensaje = "Autenticación exitosa"
+                Mensaje = "Autenticación exitosa",
+                Rol = usuario_encontrado.Rol
             };
         }
 
@@ -78,5 +79,7 @@ namespace BarberyApp.ServiciosAplicacion
                 Mensaje = "Autenticación exitosa"
             };
         }
+
+
     }
 }

@@ -112,7 +112,7 @@ namespace BarberyApp.Controllers
             try
             {
                 var localBarbero = await _dbContext.LocalBarbero
-                    .FirstOrDefaultAsync(l => l.Id == id);
+                    .FirstOrDefaultAsync(l => l.BarberoId == id);
 
                 if (localBarbero != null)
                 {
@@ -172,6 +172,31 @@ namespace BarberyApp.Controllers
             else
             {
                 return BadRequest("El identificador de usuario no es válido");
+            }
+        }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("EliminarLocalBarbero/{id}")]
+        public async Task<IActionResult> EliminarLocalBarbero(Guid id)
+        {
+            try
+            {
+                var localBarbero = await _dbContext.LocalBarbero.FirstOrDefaultAsync(l => l.Id == id);
+                if (localBarbero != null)
+                {
+                    _dbContext.LocalBarbero.Remove(localBarbero);
+                    await _dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound("No se encontró el local barbero con el ID proporcionado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
 

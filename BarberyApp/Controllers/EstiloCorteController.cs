@@ -142,6 +142,7 @@ namespace BarberyApp.Controllers
                     .Where(e => e.LocalId == id)
                     .Select(e => new
                     {
+
                         e.Nombre,
                         e.Descripcion,
                         e.Precio,
@@ -164,7 +165,86 @@ namespace BarberyApp.Controllers
             }
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("ObtenerLocalPorId/{id}")]
+        public async Task<IActionResult> ObtenerEstilosCorteById(Guid id)
+        {
+            try
+            {
+                // Consultar los estilos de corte asociados al local barbero con el ID proporcionado
+                var estilosCorte = await _dbContext.EstiloCorte
+                    .Where(e => e.LocalId == id)
+                    .Select(e => new
+                    {
 
+                        e.Id,
+                    })
+                    .ToListAsync();
+
+                if (estilosCorte == null || !estilosCorte.Any())
+                {
+                    return NotFound("No se encontraron estilos de corte asociados al local barbero con el ID proporcionado");
+                }
+                else
+                {
+                    return Ok(estilosCorte);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("ObtenerTodosEstilosCorte")]
+        public async Task<IActionResult> ObtenerTodosCliente()
+        {
+            var clientes = await _servicioEstiloCorte.ObtenerTodos();
+            return Ok(clientes);
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("ActualizarEstiloCorte/{id}")]
+        public async Task<IActionResult> ActualizarEstiloCorte([FromBody] ModificarEstiloCortecomando modificarEstiloCortecomando)
+        {
+            try
+            {
+                await _servicioEstiloCorte.HandleCommand(modificarEstiloCortecomando);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("EliminarEstiloCorte/{id}")]
+        public async Task<IActionResult> EliminarEstiloCorte(Guid id)
+        {
+            try
+            {
+                var estiloCorte = await _dbContext.EstiloCorte.FirstOrDefaultAsync(e => e.Id == id);
+                if (estiloCorte != null)
+                {
+                    _dbContext.EstiloCorte.Remove(estiloCorte);
+                    await _dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound("No se encontró el estilo de corte con el ID proporcionado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
 
 
     }

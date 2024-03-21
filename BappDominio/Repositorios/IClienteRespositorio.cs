@@ -13,5 +13,6 @@ namespace BappDominio.Repositorios
         Task Actualizar(Cliente cliente);
         Task Eliminar(Cliente cliente);
         Task<Cliente> ObtenerPorId(Guid id);
+        Task<IEnumerable<Cliente>> ObtenerTodos();
     }
 }

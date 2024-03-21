@@ -40,6 +40,13 @@ public partial class ContextoBarberyApp : DbContext
 
             entity.Property(e => e.Id).HasColumnName("Id");
 
+            entity.Property(e => e.Rol)
+                .IsRequired()
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasDefaultValue("usuario");
+                                                                    
+
 
             entity.Property(e => e.Nombre)
                 .IsRequired()

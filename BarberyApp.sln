@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBarberyApp", "TestBarberyApp\TestBarberyApp.csproj", "{AAAD6E86-8631-4A69-BA24-30E240CB1437}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4A27C1CA-71C9-4059-940D-5182EEE9C6EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,10 @@ Global
 		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAD6E86-8631-4A69-BA24-30E240CB1437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAD6E86-8631-4A69-BA24-30E240CB1437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAD6E86-8631-4A69-BA24-30E240CB1437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAD6E86-8631-4A69-BA24-30E240CB1437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{F5FD7CA6-5678-431E-ADB4-67F80DBABC29} = {B7BC9E3F-2750-4991-8F60-89B5AB7C6D01}
 		{C0672EB2-E759-4600-86F0-A1DC853ABE9F} = {D9C0FEB0-F4E4-410D-B9C8-269D0CE75674}
 		{B38C76D3-C3D9-4368-BEEE-0FEBC2B0FE66} = {E2E8B6AD-C4BD-498E-A482-FFB93A88737B}
+		{AAAD6E86-8631-4A69-BA24-30E240CB1437} = {4A27C1CA-71C9-4059-940D-5182EEE9C6EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94B66FC3-81EC-4D41-BD99-EF538ACB1085}

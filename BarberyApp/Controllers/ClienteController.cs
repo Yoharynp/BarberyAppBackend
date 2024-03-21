@@ -58,6 +58,14 @@ namespace BarberyApp.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("ObtenerTodosCliente")]
+        public async Task<IActionResult> ObtenerTodosCliente()
+        {
+            var clientes = await _clienteService.ObtenerTodos();
+            return Ok(clientes);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("ObtenerClientePorId/{id}")]
@@ -118,8 +126,22 @@ namespace BarberyApp.Controllers
             }
         }
 
-
-      
-
+        [Authorize]
+        [HttpDelete]
+        [Route("EliminarCliente/{id}")]
+        public async Task<IActionResult> EliminarCliente(Guid id)
+        {
+            var cliente = await _dbContext.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+            if (cliente != null)
+            {
+                _dbContext.Clientes.Remove(cliente);
+                await _dbContext.SaveChangesAsync();
+                return Ok("Cliente Eliminado");
+            }
+            else
+            {
+                return NotFound("No se encontró el cliente.");
+            }
+        }
     }
 }

@@ -70,14 +70,15 @@ namespace BarberyApp.Controllers
         [Route("Autenticar")]
         public async Task<IActionResult> Autenticar([FromBody] AutorizacionPeticion autorizacionPeticion)
         {
-            var respuesta = await autorizacionServicio.DevolverTokenBarbero
-                (autorizacionPeticion);
+            var respuesta = await autorizacionServicio.DevolverTokenBarbero(autorizacionPeticion);
             if (respuesta == null)
             {
                 return Unauthorized();
             }
+
             return Ok(respuesta);
         }
+
 
         [HttpPost]
         [Route("AgregarBarbero")]
@@ -103,6 +104,15 @@ namespace BarberyApp.Controllers
             {
                 return BadRequest("El identificador de usuario no es válido");
             }
+        }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("EliminarBarbero/{id}")]
+        public async Task<IActionResult> EliminarBarbero(EliminarBarberocomando id)
+        {
+            await _barberoService.HandleCommand(id);
+            return Ok();
         }
 
     }

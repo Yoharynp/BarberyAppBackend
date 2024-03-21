@@ -41,22 +41,22 @@ namespace BarberyApp.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("ObtenerCita")]
-        public async Task<IActionResult> ObtenerCita()
+        [Route("ObtenerCitas")]
+        public async Task<IActionResult> ObtenerCitas()
         {
             try
             {
                 var usuarioID = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 if (Guid.TryParse(usuarioID, out Guid clienteId))
                 {
-                    var cita = await _dbContext.Citas.FirstOrDefaultAsync(c => c.ClienteId == clienteId);
-                    if (cita != null)
+                    var citas = await _dbContext.Citas.Where(c => c.ClienteId == clienteId).ToListAsync();
+                    if (citas.Any())
                     {
-                        return Ok(cita);
+                        return Ok(citas);
                     }
                     else
                     {
-                        return NotFound("No se encontró la cita.");
+                        return NotFound("No se encontraron citas.");
                     }
                 }
                 else
@@ -66,7 +66,30 @@ namespace BarberyApp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error al obtener la cita: {ex.Message}");
+                return StatusCode(500, $"Error al obtener las citas: {ex.Message}");
+            }
+        }
+
+
+        [HttpGet]
+        [Route("ObtenerTodasCitas")]
+        public async Task<IActionResult> ObtenerTodasCitas()
+        {
+            try
+            {
+                var citas = await _dbContext.Citas.ToListAsync();
+                if (citas.Any())
+                {
+                    return Ok(citas);
+                }
+                else
+                {
+                    return NotFound("No se encontraron citas.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener las citas: {ex.Message}");
             }
         }
 
@@ -116,8 +139,14 @@ namespace BarberyApp.Controllers
         {
             try
             {
-                var cita = await _dbContext.Citas.FirstOrDefaultAsync(c => c.Id == id);
-                if (cita != null)
+                var cita = await _dbContext.Citas
+                    .Where(c => c.LocalBarberoId == id)
+                    .Select(c => new
+                    {
+                        c.Id,
+
+                    }).ToListAsync();
+                if (cita.Any())
                 {
                     return Ok(cita);
                 }

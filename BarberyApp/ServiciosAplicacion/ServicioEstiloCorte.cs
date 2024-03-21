@@ -21,24 +21,24 @@ namespace BarberyApp.ServiciosAplicacion
             estiloCorte.AsignarGaleriaFotos(estiloCortecomando.GaleriaFotos);
             await _estiloCorteRepositorio.AgregarEstiloCorte(estiloCorte);
         }
-        //public async Task HandleCommand(ModificarEstiloCortecomando comando)
-        //{
-        //    var estiloCorte = await _estiloCorteRepositorio.ObtenerPorId(comando.Id) ?? throw new Exception("Estilo de corte no encontrado");
-        //    estiloCorte.AsignarNombreEstiloCorte(NombreCorte.Crear(comando.Nombre));
-        //    estiloCorte.AsignarDescripcion(Descripcion.Crear(comando.Descripcion));
-        //    estiloCorte.AsignarPrecio(estiloCorte.Precio);
-
-        //    await _estiloCorteRepositorio.ModificarEstiloCorte(estiloCorte.Id,estiloCorte);
-        //}
+        public async Task HandleCommand(ModificarEstiloCortecomando comando)
+        {
+            var estiloCorte = await _estiloCorteRepositorio.ObtenerPorId(comando.Id) ?? throw new Exception("Estilo de corte no encontrado");
+            estiloCorte.AsignarNombreEstiloCorte(comando.Nombre);
+            estiloCorte.AsignarDescripcion(comando.Descripcion);
+            estiloCorte.AsignarPrecio(comando.Precio);
+            estiloCorte.AsignarGaleriaFotos(comando.GaleriaFotos);
+            await _estiloCorteRepositorio.ModificarEstiloCorte(estiloCorte.Id, estiloCorte);
+        }
 
         //public async Task HandleCommand(EliminarEstiloCortecomando comando)
         //{
         //    var estiloCorte = await _estiloCorteRepositorio.ObtenerPorId(comando.Id) ?? throw new Exception("Estilo de corte no encontrado");
         //    await _estiloCorteRepositorio.EliminarEstiloCorte(estiloCorte.Id);
         //}
-        //public async Task<List<EstiloCorte>> ObtenerTodos()
-        //{
-        //    return await _estiloCorteRepositorio.ObtenerTodos();
-        //}
+        public async Task<List<EstiloCorte>> ObtenerTodos()
+        {
+            return await _estiloCorteRepositorio.ObtenerTodos();
+        }
     }
 }

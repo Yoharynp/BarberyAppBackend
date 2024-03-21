@@ -39,5 +39,10 @@ namespace BarberyApp.ServiciosAplicacion
             await _clienteRespositorio.Eliminar(cliente);
         }
 
+        public async Task<IEnumerable<Cliente>> ObtenerTodos()
+        {
+            return await _clienteRespositorio.ObtenerTodos();
+        }
+
     }
 }

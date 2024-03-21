@@ -16,6 +16,7 @@ namespace BappDominio.Entidades
         public ApellidoBarbero Apellido { get; private set; }
         public EmailBarbero Email { get; private set; }
         public Contraseñabarbero Contraseña { get; private set; }
+        public string Rol { get; private set; } = "usuario";
 
 
         public Barbero(Guid id)
@@ -38,6 +39,11 @@ namespace BappDominio.Entidades
         public void AsignarContraseña(Contraseñabarbero contraseña)
         {
             Contraseña = contraseña;
+        }
+
+        public void AsignarRol(string rol)
+        {
+            Rol = rol;
         }
          
     }

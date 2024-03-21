@@ -40,5 +40,10 @@ namespace BappInfraestructura
             _ = _contextoBaseDeDatos.Clientes.FindAsync((Guid)id);
             return Task.FromResult(_contextoBaseDeDatos.Clientes.Find(id));
         }
+
+        public Task<IEnumerable<Cliente>> ObtenerTodos()
+        {
+            return Task.FromResult(_contextoBaseDeDatos.Clientes.AsEnumerable());
+        }
     }
 }
