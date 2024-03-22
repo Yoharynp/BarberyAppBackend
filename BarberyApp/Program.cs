@@ -27,6 +27,10 @@ builder.Services.AddScoped<ServicioLocalBarbero>();
 builder.Services.AddScoped<ServicioEstiloCorte>();
 builder.Services.AddScoped<ILocalbarbero, LocalBarberoRepositorio>();
 builder.Services.AddScoped<ICitaRepositorio, CitaRepositorio>();
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5000);
+});
 
 builder.Services.AddScoped<IAutorizacionServicio, AutorizacionServicio>();
 var key = builder.Configuration.GetValue<string>("JwtConfiguracion:Secret");

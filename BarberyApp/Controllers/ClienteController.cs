@@ -127,6 +127,27 @@ namespace BarberyApp.Controllers
         }
 
         [Authorize]
+        [HttpPut]
+        [Route("ActualizarClienteAdmin/{id}")]
+        public async Task<IActionResult> ActualizarClienteAdmin([FromBody] ModificarClienteComando comando)
+        {
+            var cliente = await _dbContext.Clientes.FirstOrDefaultAsync(c => c.Id == comando.Id);
+            if (cliente != null)
+            {
+                cliente.AsignarNombre(ClienteNombre.Crear(comando.Nombre));
+                cliente.AsignarApellido(ClienteApellido.Crear(comando.Apellido));
+                cliente.AsignarEmail(ClienteEmail.Crear(comando.Email));
+                cliente.AsignarContraseña(ClienteContraseña.Crear(comando.Contraseña));
+                await _dbContext.SaveChangesAsync();
+                return Ok("Cliente Actaulizado");
+            }
+            else
+            {
+                return NotFound("No se encontró el cliente.");
+            }
+        }
+
+        [Authorize]
         [HttpDelete]
         [Route("EliminarCliente/{id}")]
         public async Task<IActionResult> EliminarCliente(Guid id)

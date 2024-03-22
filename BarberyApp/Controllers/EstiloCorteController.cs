@@ -246,6 +246,31 @@ namespace BarberyApp.Controllers
             }
         }
 
+        [Authorize]
+        [HttpDelete]
+        [Route("EliminarEstiloCortePorLocal/{id}")]
+        public async Task<IActionResult> EliminarEstiloCortePorLocal(Guid id)
+        {
+            try
+            {
+                var estilosCorte = await _dbContext.EstiloCorte.Where(e => e.LocalId == id).ToListAsync();
+                if (estilosCorte != null && estilosCorte.Any())
+                {
+                    _dbContext.EstiloCorte.RemoveRange(estilosCorte);
+                    await _dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound("No se encontraron estilos de corte asociados al local barbero con el ID proporcionado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
 
     }
 }

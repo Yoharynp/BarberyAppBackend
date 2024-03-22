@@ -112,7 +112,7 @@ namespace BarberyApp.Controllers
             try
             {
                 var localBarbero = await _dbContext.LocalBarbero
-                    .FirstOrDefaultAsync(l => l.BarberoId == id);
+                    .FirstOrDefaultAsync(l => l.Id == id);
 
                 if (localBarbero != null)
                 {

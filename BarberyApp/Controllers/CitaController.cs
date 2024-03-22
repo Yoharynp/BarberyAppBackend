@@ -161,6 +161,29 @@ namespace BarberyApp.Controllers
             }
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("ObtenerCitaId/{id}")]
+        public async Task<IActionResult> ObtenerCitaId(Guid id)
+        {
+            try
+            {
+                var cita = await _dbContext.Citas.FirstOrDefaultAsync(c => c.Id == id);
+                if (cita != null)
+                {
+                    return Ok(cita);
+                }
+                else
+                {
+                    return NotFound("No se encontró la cita.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener la cita: {ex.Message}");
+            }
+        }
+
 
 
         [Authorize]
